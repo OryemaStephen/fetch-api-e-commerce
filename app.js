@@ -7,6 +7,7 @@ async function getProducts(){
         }
 
         const data = await response.json();
+        console.log(data)
         const container = document.getElementById('container');
         data.forEach(item => {
             const divEl = document.createElement('div');
@@ -14,7 +15,7 @@ async function getProducts(){
             divEl.innerHTML+=`
                 <img src="${item.image}" alt="${item.title}" class="product-img">
                 <span class="product-title">${item.title}</span>
-                <span class="product-price">UShs. ${item.price*3700}</span>
+                <span class="product-price">UShs. ${(item.price*3700).toLocaleString()}</span>
                 <button class="add-to-cart-btn" onclick="alert('Added successfully')">Add to cart</button>
             `
             container.appendChild(divEl);
